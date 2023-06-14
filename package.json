@@ -48,17 +48,31 @@
     "typescript": "^5.0.4"
   },
   "prettier": "@awdware/prettier-config",
-  "keywords": [],
+  "keywords": [
+    "concat",
+    "sourcemap",
+    "source map",
+    "source maps",
+    "source-maps",
+    "source-map",
+    "concatenation",
+    "concatenator",
+    "concatenating",
+    "bundle",
+    "single",
+    "file",
+    "singleFile"
+  ],
   "author": {
     "name": "Janik Schumacher (LoaderB0T)",
     "url": "https://awdware.de"
   },
-  "homepage": "https://github.com/LoaderB0T/source-maps-concat",
+  "homepage": "https://github.com/LoaderB0T/concat-with-sourcemap",
   "bugs": {
-    "url": "https://github.com/LoaderB0T/source-maps-concat/issues"
+    "url": "https://github.com/LoaderB0T/concat-with-sourcemap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LoaderB0T/source-maps-concat.git"
+    "url": "https://github.com/LoaderB0T/concat-with-sourcemap.git"
   }
 }

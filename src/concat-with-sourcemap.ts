@@ -57,7 +57,7 @@ export class ConcatWithSourcemap {
     await this.saveMap(join(outputDir, this._bundleMapName));
   }
 
-  public async add(filePath: string, content: string, sourceMap?: string) {
+  public async add(filePath: string | null, content: string, sourceMap?: string) {
     if (this._fileContent.length !== 0) {
       this._fileContent += separator;
     }
@@ -71,27 +71,25 @@ export class ConcatWithSourcemap {
 
     if (parsedSourceMap) {
       await this.addWithSourceMap(parsedSourceMap);
-    } else {
+    } else if (filePath) {
       this.addWithoutSourceMap(filePath, lineCount);
     }
     this._lineOffset += lineCount;
   }
 
   private addWithoutSourceMap(filePath: string, lines: number) {
-    if (filePath) {
-      for (let i = 1; i <= lines; i++) {
-        this._sourceMap.addMapping({
-          generated: {
-            line: this._lineOffset + i,
-            column: 0,
-          },
-          original: {
-            line: i,
-            column: 0,
-          },
-          source: filePath,
-        });
-      }
+    for (let i = 1; i <= lines; i++) {
+      this._sourceMap.addMapping({
+        generated: {
+          line: this._lineOffset + i,
+          column: 0,
+        },
+        original: {
+          line: i,
+          column: 0,
+        },
+        source: filePath,
+      });
     }
   }
 
