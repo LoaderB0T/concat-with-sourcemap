@@ -1,0 +1,64 @@
+{
+  "name": "concat-with-sourcemap",
+  "version": "0.1.0",
+  "description": "A tool to concat multiple js files with source maps into one js file with one sourcemap file",
+  "main": "./lib/cjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
+  "type": "module",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint": "pnpm eslint ./src/**",
+    "test": "jest",
+    "prebuild": "pnpm rimraf lib",
+    "build": "pnpm build-esm && pnpm build-cjs",
+    "build-base": "tsc -p .",
+    "build-esm": "pnpm build-base --outDir lib/esm",
+    "build-cjs": "pnpm build-base --outDir lib/cjs --module commonjs && pnpm fix-cjs",
+    "fix-cjs": "node --loader ts-node/esm ./fix-cjs.ts",
+    "test-script": "node --loader ts-node/esm ./src/test.ts"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "source-map": "^0.7.4"
+  },
+  "devDependencies": {
+    "@awdware/eslint-config-base": "^1.0.0",
+    "@awdware/eslint-config-nodejs": "^1.0.0",
+    "@awdware/prettier-config": "^1.0.0",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "jest": "^29.5.0",
+    "jest-junit": "^16.0.0",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "prettier": "@awdware/prettier-config",
+  "keywords": [],
+  "author": {
+    "name": "Janik Schumacher (LoaderB0T)",
+    "url": "https://awdware.de"
+  },
+  "homepage": "https://github.com/LoaderB0T/source-maps-concat",
+  "bugs": {
+    "url": "https://github.com/LoaderB0T/source-maps-concat/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LoaderB0T/source-maps-concat.git"
+  }
+}
