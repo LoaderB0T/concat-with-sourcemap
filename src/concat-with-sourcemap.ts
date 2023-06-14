@@ -62,7 +62,7 @@ export class ConcatWithSourcemap {
 
   /**
    * Saves the current file content and sourcemap
-   * @param outputDir The directory to save to
+   * @param outputDir The directory to save the files to
    */
   public async saveFiles(outputDir: string) {
     await this.saveContent(join(outputDir, this._bundleName));
