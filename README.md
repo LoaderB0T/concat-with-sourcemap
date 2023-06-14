@@ -53,6 +53,7 @@ await concat.addDirectory('./dist/my-app');
 // Save the bundle and the sourcemap to the given directory
 // In this case, the bundle will be saved to ./dist/my-bundle.js and the sourcemap to ./dist/my-bundle.js.map
 await concat.saveFiles('./dist');
+
 ```
 
 ## Contributing 🧑🏻‍💻
