@@ -1,6 +1,6 @@
 {
   "name": "concat-with-sourcemap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tool to concat multiple js files with source maps into one js file with one sourcemap file",
   "main": "./lib/cjs/index.js",
   "exports": {
