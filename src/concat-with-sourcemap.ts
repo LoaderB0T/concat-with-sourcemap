@@ -44,18 +44,26 @@ export class ConcatWithSourcemap {
     await this.add(unixPath, fileContent, sourceMapContent);
   }
 
+  /**
+   * Saves the current file content
+   * @param filePath The file path to save to
+   */
   public async saveContent(filePath: string) {
     await writeFile(filePath, this.content, 'utf8');
   }
 
   /**
-   * Saves the current map
+   * Saves the current sourcemap
    * @param filePath The file path to save to
    */
   public async saveMap(filePath: string): Promise<void> {
     await writeFile(filePath, this.sourceMap, 'utf8');
   }
 
+  /**
+   * Saves the current file content and sourcemap
+   * @param outputDir The directory to save to
+   */
   public async saveFiles(outputDir: string) {
     await this.saveContent(join(outputDir, this._bundleName));
     await this.saveMap(join(outputDir, this._bundleMapName));
