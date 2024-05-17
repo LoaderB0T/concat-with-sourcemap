@@ -108,6 +108,9 @@ export class ConcatWithSourcemap {
   private async addWithSourceMap(parsedSourceMap: any) {
     const upstreamSM = await new SourceMapConsumer(parsedSourceMap);
     upstreamSM.eachMapping(mapping => {
+      if (mapping.source === null) {
+        return;
+      }
       this._sourceMap.addMapping({
         generated: {
           line: this._lineOffset + mapping.generatedLine,
