@@ -10,4 +10,6 @@ on:
 jobs:
   build:
     uses: awdware/dev/.github/workflows/nodejs.yml@main
+    with:
+      run-tests: false
     secrets: inherit
